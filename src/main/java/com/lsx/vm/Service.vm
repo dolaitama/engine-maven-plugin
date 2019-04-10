@@ -1,0 +1,14 @@
+package ${path}.${servicePath};
+
+import ${path}.${servicePath}.base.BaseService; 
+/**
+* ${uname}业务操作接口
+*
+* @author  administrator
+* @version  [版本号, ${date}]
+* @see  [相关类/方法]
+* @since  [产品/模块版本]
+*/
+public interface ${uname}Service extends BaseService {
+
+}

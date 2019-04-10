@@ -1,0 +1,32 @@
+package ${path}.${controllerPath};
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import ${path}.${controllerPath}.base.BaseController;
+import ${path}.${entityPath}.${uname};
+import ${path}.${servicePath}.${uname}Service;
+/**
+* ${uname} 控制器
+*
+* @author  administrator
+* @version  [版本号, ${date}]
+* @see  [相关类/方法]
+* @since  []
+*/
+@Controller
+@RequestMapping("/${lname}")
+public class ${uname}Controller extends BaseController<${uname}> {
+
+	private final Logger logger = LoggerFactory.getLogger(${uname}Controller.class);
+	private ${uname}Service ${lname}Service;
+
+	@Autowired
+	public ${uname}Controller(${uname}Service ${lname}Service){
+		this.${lname}Service=${lname}Service;
+		this.baseService=${lname}Service;
+		this.model="${lname}";
+	}
+}

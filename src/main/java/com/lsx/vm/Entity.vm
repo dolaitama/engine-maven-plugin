@@ -1,0 +1,34 @@
+package ${path}.${entityPath};
+
+import ${path}.${entityPath}.base.BaseEntity;
+
+import java.io.Serializable;
+/**
+* ${uname} 实体类
+*
+* @author  administrator
+* @version  [版本号, ${date}]
+* @see  [相关类/方法]
+* @since  []
+*/
+@SuppressWarnings("serial")
+public class ${uname} extends BaseEntity implements Serializable {
+#foreach(${col} in ${cols})
+
+	/**
+	* ${col.str}
+	*/
+	private ${col.type} ${col.colName};
+#end
+#foreach(${col} in ${cols})
+
+	public ${col.type} get${col.uname}() {
+		return ${col.colName};
+	}
+
+	public void set${col.uname}(${col.type} ${col.colName}) {
+		this.${col.colName} = ${col.colName};
+	}
+#end
+
+}
