@@ -3,10 +3,36 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lsx</groupId>
 	<artifactId>engine-maven-plugin</artifactId>
-	<version>2.0</version>
+	<version>2.0.3</version>
 	<name>engine</name>
 	<packaging>maven-plugin</packaging>
-	<description>代码生成器(1.1版本新增可配置多个表前缀)(1.11版本解除表字段命名限制)(1.12支持oracle)(1.14处理分页bug)(1.15解决xml列顺序bug)</description>
+	<description>代码生成器(2.0.2 支持表前加数据库名,新增默认统一异常处理类,修复上一版本bug)</description>
+	<build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.hbase2Redis.Hbase2Redis</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 	<dependencies>
 		<dependency>
 		  <groupId>org.apache.maven</groupId>
