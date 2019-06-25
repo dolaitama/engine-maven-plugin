@@ -1,0 +1,21 @@
+package ${path}.${controllerPath}.base;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import ${path}.${responsePath}.Result;
+
+/**
+ * 统一异常处理
+ * @author administrator
+ * @date ${date}
+ */
+@RestControllerAdvice
+public class ExceptionController {
+	
+	@ExceptionHandler
+	public Result handleException(Exception e){
+		e.printStackTrace();
+		return Result.create().fail(e.getMessage());
+	}
+
+}
