@@ -3,14 +3,16 @@ package ${path}.${responsePath};
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
- * Created by lsx on 15/5/13.
+ * Created by administrator on ${date}
  */
 public class Result {
 	private boolean success = true;
 	private int code = 1000;
-	private String message = "";
-	private String error = "";
+	private String message = "暂无相关信息";
+	private String error = "操作异常";
 	private Map<String, Object> data = new HashMap<String, Object>();
 
 	public static Result create() {
@@ -23,14 +25,22 @@ public class Result {
 	}
 	
 	public Result fail(){
-		return this.fail("调用失败");
+		return this.fail(null, null);
 	}
 	
 	public Result fail(String message){
+		return this.fail(null, message);
+	}
+	
+	public Result fail(String error, String message){
 		this.success=false;
 		this.code=1010;
-		this.error="暂无相关信息";
-		this.message="调用失败";
+		if(StringUtils.isNotBlank(error)){
+			this.error=error;
+		}
+		if(StringUtils.isNotBlank(message)){
+			this.message=message;
+		}
 		return this;
 	}
 

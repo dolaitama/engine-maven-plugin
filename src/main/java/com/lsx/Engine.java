@@ -14,6 +14,7 @@ import org.jdom2.DataConversionException;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import com.lsx.util.GenerateUtil;
 import com.lsx.util.SaxUtil;
 
 @Mojo(name="start")
@@ -50,7 +51,7 @@ public class Engine extends AbstractMojo {
 		}else{
 			if(database.getAttribute("dialect") != null &&
 					database.getAttributeValue("dialect").toLowerCase().equals("mysql")){
-				throw new MojoExecutionException("请设置数据库名称");
+				throw new MojoExecutionException("缺少数据库名称,请在database节点下设置database属性");
 			}
 		}
 		if(database.getAttribute("username") != null){
@@ -102,7 +103,7 @@ public class Engine extends AbstractMojo {
 				StringUtils.isNotBlank(javaFile.getAttributeValue("path"))){
 			Constant.path = javaFile.getAttributeValue("path");
 		}else{
-			throw new MojoExecutionException("请设置基础代码包");
+			throw new MojoExecutionException("请设置基础代码包，请在javaFile节点下设置path属性（示例：path='com.xxx'）");
 		}
 		if(javaFile.getAttribute("exceptionClass") != null && 
 				StringUtils.isNotBlank(javaFile.getAttributeValue("exceptionClass")) &&

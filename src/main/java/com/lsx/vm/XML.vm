@@ -9,7 +9,13 @@
 	</resultMap>
 
 	<insert id="insert" parameterType="${uname}">
-		insert into ${tablename}(
+		insert into 
+		#if(${pretable})
+		${pretable}.${tablename}
+		#else
+		${tablename}
+		#end
+		(
 		<trim suffixOverrides=",">
 		#foreach(${col} in ${cols})
 		#if(${col.colName} == "id")
@@ -45,7 +51,12 @@
 	</insert>
 
 	<update id="delete" parameterType="${uname}">
-		delete from ${tablename}
+		delete from 
+		#if(${pretable})
+		${pretable}.${tablename}
+		#else
+		${tablename}
+		#end
 		<trim prefix="where" prefixOverrides="and | AND | or | OR">
 		#foreach(${col} in ${cols})
 			<if test="${col.colName} != null">
@@ -56,7 +67,12 @@
 	</update>
 
 	<update id="update" parameterType="${uname}">
-		update ${tablename}
+		update 
+		#if(${pretable})
+		${pretable}.${tablename}
+		#else
+		${tablename}
+		#end
 		<trim prefix="set" suffixOverrides=",">
 		#foreach(${col} in ${cols})
 			<if test="${col.colName} != null">
@@ -68,7 +84,12 @@
 	</update>
 
 	<select id="getByParam" parameterType="String" resultMap="BaseResultMap">
-		select * from ${tablename}
+		select * from 
+		#if(${pretable})
+		${pretable}.${tablename}
+		#else
+		${tablename}
+		#end
 		<trim prefix="where" prefixOverrides="and | AND | or | OR">
 		#foreach(${col} in ${cols})
 			<if test="${col.colName} != null">
@@ -79,7 +100,12 @@
 	</select>
 
 	<select id="queryList" resultMap="BaseResultMap">
-		select * from ${tablename}
+		select * from 
+		#if(${pretable})
+		${pretable}.${tablename}
+		#else
+		${tablename}
+		#end
 		<trim prefix="where" prefixOverrides="and | AND | or | OR">
 		#foreach(${col} in ${cols})
 			<if test="${col.colName} != null">
@@ -93,7 +119,12 @@
 	#if(${dialect}=="oracle")
 		select * from (select a.*,rownum rn from (
 	#end
-		select * from ${tablename}
+		select * from 
+		#if(${pretable})
+		${pretable}.${tablename}
+		#else
+		${tablename}
+		#end
 		<trim prefix="where" prefixOverrides="and | AND | or | OR">
 		#foreach(${col} in ${cols})
 			<if test="${col.colName} != null">
@@ -117,7 +148,12 @@
 	</select>
 
 	<select id="queryDataGridCount" resultType="int">
-		select count(1) from ${tablename}
+		select count(1) from 
+		#if(${pretable})
+		${pretable}.${tablename}
+		#else
+		${tablename}
+		#end
 		<trim prefix="where" prefixOverrides="and | AND | or | OR">
 		#foreach(${col} in ${cols})
 			<if test="${col.colName} != null">

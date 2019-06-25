@@ -7,8 +7,8 @@ import org.apache.velocity.VelocityContext;
 /**
  * 代码生成器常量
  *
- * @author sunlei
- * @version [版本号, 2016-3-6]
+ * @author lsx
+ * @version [版本号, 2019-6-12]
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
@@ -135,6 +135,14 @@ public class Constant {
 	
 	public static String annotation;
 	
+	/**
+	 * 库名
+	 */
+	public static String preTable;
+	
+	/**
+	 * 表名
+	 */
 	public static String tableName;
 	
 	public static VelocityContext ctx = new VelocityContext();
